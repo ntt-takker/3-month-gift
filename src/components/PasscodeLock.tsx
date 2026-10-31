@@ -119,7 +119,7 @@ export default function PasscodeLock({
       )}
 
       {/* Apple-style Frosted Glass Card Container */}
-      <div className="relative w-full max-w-sm glass-card rounded-3xl p-7 flex flex-col items-center text-center shadow-2xl z-10 border border-white/60 dark:border-white/10">
+      <div className="relative w-full max-w-sm glass-card rounded-3xl p-7 flex flex-col items-center text-center shadow-2xl z-10 border border-stone-200/80 dark:border-white/10">
         {/* Cute MS Verse App Icon with lock badge */}
         <div className="relative mb-3 group">
           <img
@@ -143,7 +143,7 @@ export default function PasscodeLock({
         </p>
 
         {/* Partner Login Selector (Apple-style Segmented Glass Control) */}
-        <div className="w-full grid grid-cols-2 gap-2 p-1.5 rounded-2xl glass-card-subtle mb-4 border border-white/50 dark:border-white/10">
+        <div className="w-full grid grid-cols-2 gap-2 p-1.5 rounded-2xl glass-card-subtle mb-4 border border-stone-200/70 dark:border-white/10">
           <button
             type="button"
             onClick={() => handleSelectPartner('partner1')}

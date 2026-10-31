@@ -47,7 +47,7 @@ export default function MediaCornerView({
 
   // Playlist edit state
   const [isEditingPlaylist, setIsEditingPlaylist] = useState(false);
-  const [editUrl, setEditUrl] = useState(playlist.url);
+  const [editUrl, setEditUrl] = useState(playlist.url || playlist.playlistUrl || '');
   const [editTitle, setEditTitle] = useState(playlist.title);
   const [editDesc, setEditDesc] = useState(playlist.description);
 
@@ -135,7 +135,7 @@ export default function MediaCornerView({
     spot: { icon: MapPin, label: 'Date Spot' },
   };
 
-  const playlistUpdater = profile[playlist.updatedBy];
+  const playlistUpdater = playlist.updatedBy ? profile[playlist.updatedBy] : null;
 
   return (
     <div className="space-y-8 animate-fade-in pb-12">
@@ -179,9 +179,11 @@ export default function MediaCornerView({
                 <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-[#1DB954]/20 text-[#1DB954] border border-[#1DB954]/30 flex items-center gap-1">
                   <Radio className="w-2.5 h-2.5 animate-pulse" /> Spotify Shared Embed
                 </span>
-                <span className="text-xs text-stone-500 dark:text-stone-400">
-                  Updated by {playlistUpdater.name} ({playlistUpdater.nickname})
-                </span>
+                {playlistUpdater && (
+                  <span className="text-xs text-stone-500 dark:text-stone-400">
+                    Updated by {playlistUpdater.name} ({playlistUpdater.nickname})
+                  </span>
+                )}
               </div>
               <h2 className="text-lg sm:text-xl font-serif font-bold text-stone-900 dark:text-stone-100 mt-1">
                 {playlist.title}
@@ -302,7 +304,7 @@ export default function MediaCornerView({
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-white/20 dark:border-white/5 space-y-3">
+                <div className="pt-3 border-t border-stone-200/80 dark:border-white/10 space-y-3">
                   {/* Reviews & Ratings */}
                   {isCompleted && (
                     <div className="p-3 rounded-2xl bg-rose-500/5 dark:bg-rose-500/10 border border-rose-500/20 text-xs">
@@ -378,7 +380,6 @@ export default function MediaCornerView({
                     </div>
                   </div>
                 </div>
-              </div>
             );
           })}
         </div>

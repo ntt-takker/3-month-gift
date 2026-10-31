@@ -241,12 +241,16 @@ export default function App() {
     };
   }, [profile.currentViewer]);
 
-  // Dark Mode synchronization with HTML element
+  // Dark Mode synchronization with HTML element and mobile status bar
   useEffect(() => {
     if (profile.darkMode) {
       document.documentElement.classList.add('dark');
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', '#0F0E11');
     } else {
       document.documentElement.classList.remove('dark');
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', '#FAF8F5');
     }
   }, [profile.darkMode]);
 

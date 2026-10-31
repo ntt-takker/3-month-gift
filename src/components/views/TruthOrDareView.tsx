@@ -53,19 +53,19 @@ export default function TruthOrDareView({
       title: 'When Apart',
       subtitle: 'Long distance, calls & sweet nostalgia',
       icon: PhoneCall,
-      theme: 'from-blue-500/10 to-indigo-500/10 border-indigo-200 dark:border-indigo-900',
+      theme: 'bg-gradient-to-br from-blue-500/10 to-indigo-500/10 border-indigo-200 dark:border-indigo-900',
     },
     public: {
       title: 'In Public Together',
       subtitle: 'Sitting at a café, dinner & subtle mischief',
       icon: Coffee,
-      theme: 'from-amber-500/10 to-orange-500/10 border-amber-200 dark:border-amber-900',
+      theme: 'bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-amber-200 dark:border-amber-900',
     },
     dark: {
       title: 'Dark Romance',
       subtitle: 'Alone & in the mood, spicy & intense',
       icon: Flame,
-      theme: 'from-rose-500/15 to-purple-950/30 border-rose-400 dark:border-rose-900',
+      theme: 'bg-gradient-to-br from-rose-500/15 to-purple-950/30 border-rose-400 dark:border-rose-900',
     },
   };
 

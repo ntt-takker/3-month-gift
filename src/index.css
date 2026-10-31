@@ -1,0 +1,103 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer utilities {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(226, 220, 215, 0.75);
+    box-shadow: 0 4px 20px -2px rgba(120, 50, 70, 0.04), 0 1px 3px 0 rgba(0, 0, 0, 0.02);
+  }
+  .dark .glass-card {
+    background: rgba(26, 24, 29, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  }
+
+  .glass-card-subtle {
+    background: rgba(255, 255, 255, 0.68);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(226, 220, 215, 0.55);
+  }
+  .dark .glass-card-subtle {
+    background: rgba(35, 33, 40, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(226, 220, 215, 0.8);
+    box-shadow: 0 8px 30px -4px rgba(120, 50, 70, 0.04);
+  }
+  .dark .glass-panel {
+    background: rgba(22, 20, 26, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes floating-heart {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(6deg);
+  }
+}
+
+@keyframes floating-heart-delay-1 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(-8deg);
+  }
+}
+
+@keyframes floating-heart-delay-2 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+.animate-floating-heart {
+  animation: floating-heart 6s ease-in-out infinite;
+}
+
+.animate-floating-heart-delay-1 {
+  animation: floating-heart-delay-1 8s ease-in-out infinite 2s;
+}
+
+.animate-floating-heart-delay-2 {
+  animation: floating-heart-delay-2 7s ease-in-out infinite 3.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

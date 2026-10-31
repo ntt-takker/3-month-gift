@@ -235,7 +235,7 @@ export default function ComplimentVaultView({
                       className={`p-1 rounded-full transition-transform active:scale-125 cursor-pointer ${
                         compliment.isFavorite
                           ? 'text-rose-500 fill-current'
-                          : 'text-stone-300 hover:text-stone-500'
+                          : 'text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300'
                       }`}
                       title={compliment.isFavorite ? 'Unfavorite' : 'Mark as favorite'}
                     >
@@ -247,7 +247,7 @@ export default function ComplimentVaultView({
                         soundEngine.playBubblePop();
                         onDeleteCompliment(compliment.id);
                       }}
-                      className="p-1 rounded-full text-stone-300 hover:text-rose-500 dark:hover:text-rose-400 transition-colors cursor-pointer"
+                      className="p-1 rounded-full text-stone-400 hover:text-rose-500 dark:hover:text-rose-400 transition-colors cursor-pointer"
                       title="Delete compliment from both apps"
                     >
                       <Trash2 className="w-4 h-4" />

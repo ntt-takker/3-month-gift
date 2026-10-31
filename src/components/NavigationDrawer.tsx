@@ -122,150 +122,138 @@ export default function NavigationDrawer({
   return (
     <>
       {/* Apple-style Frosted Glass Top Bar */}
-      <header className="sticky top-0 z-30 w-full glass-panel transition-colors">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between gap-3">
-          {/* Left: Drawer trigger & Wordmark */}
-          <div className="flex items-center gap-2.5 sm:gap-3">
+      <header className="sticky top-0 z-30 w-full glass-panel border-b border-stone-200/70 dark:border-white/10 transition-colors">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between gap-4">
+          {/* Zone 1: Brand & Menu Trigger */}
+          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
             <button
               type="button"
               onClick={() => {
                 soundEngine.playBubblePop();
                 setIsOpen(true);
               }}
-              className="w-10 h-10 rounded-2xl glass-card hover:bg-white/90 dark:hover:bg-stone-800 flex items-center justify-center text-stone-700 dark:text-stone-200 transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-xs"
-              aria-label="Open menu"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl glass-card hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center justify-center text-stone-700 dark:text-stone-200 transition-all active:scale-95 cursor-pointer shadow-xs"
+              aria-label="Open menu drawer"
+              title="All Features & Sanctuaries"
             >
               <Menu className="w-5 h-5" />
             </button>
-            <div className="flex items-center gap-2">
-              <span className="font-serif text-lg font-bold tracking-tight text-stone-900 dark:text-stone-100 flex items-center gap-1.5">
+
+            <button
+              type="button"
+              onClick={() => {
+                soundEngine.playTap();
+                onSelectTab('dashboard');
+              }}
+              className="flex items-center gap-2 text-left cursor-pointer group"
+            >
+              <span className="font-serif text-lg font-bold tracking-tight text-stone-900 dark:text-stone-100 flex items-center gap-1.5 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
                 MS Verse <Heart className="w-3.5 h-3.5 text-rose-500 fill-current animate-pulse" />
               </span>
               <span className="hidden sm:inline text-xs text-stone-400 dark:text-stone-600">·</span>
-              <span className="hidden sm:inline text-xs text-rose-600 dark:text-rose-400 font-medium">
-                Day {daysTogether} Together
+              <span className="hidden sm:inline text-xs text-stone-600 dark:text-stone-300 font-medium">
+                Day {daysTogether}
               </span>
-            </div>
+            </button>
           </div>
 
-          {/* Center / Right: Quick Actions */}
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            {/* Logged in partner badge & secure switch button */}
-            <div className="flex items-center glass-card-subtle p-1 rounded-2xl text-xs border border-white/40 dark:border-white/10">
-              <div
-                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-white dark:bg-stone-800 text-stone-900 dark:text-white shadow-xs font-semibold"
-                title={`Logged in as ${activeViewer.nickname}`}
-              >
-                <span>{activeViewer.avatar}</span>
-                <span className="max-w-[90px] sm:max-w-[130px] truncate">
-                  {activeViewer.nickname}
-                </span>
-              </div>
+          {/* Zone 2: Primary Desktop Navigation Links (Clean, Uncluttered Typography) */}
+          <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+            {[
+              { id: 'dashboard', label: 'Dashboard' },
+              { id: 'calendar', label: 'Calendar' },
+              { id: 'chat', label: 'Whispers & Chat', badge: unreadChatCount > 0 ? unreadChatCount : undefined },
+              { id: 'memories', label: 'Memories' },
+              { id: 'todos', label: 'Bucket List' },
+            ].map((tab) => {
+              const isSelected = currentTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => {
+                    soundEngine.playBubblePop();
+                    onSelectTab(tab.id as ActiveTab);
+                  }}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer relative ${
+                    isSelected
+                      ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400 font-bold'
+                      : 'text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-100/70 dark:hover:bg-stone-800/60'
+                  }`}
+                >
+                  <span>{tab.label}</span>
+                  {tab.badge && (
+                    <span className="ml-1.5 px-1.5 py-0.2 rounded-full text-[10px] bg-rose-500 text-white font-bold">
+                      {tab.badge}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </nav>
 
-              <button
-                type="button"
-                onClick={() => initiateSwitch(otherViewerId)}
-                className="flex items-center gap-1 px-2 py-1.5 rounded-xl text-stone-500 hover:text-rose-600 dark:text-stone-400 dark:hover:text-rose-400 transition-all cursor-pointer font-medium"
-                title={`Switch to ${otherViewer.nickname}'s side (PIN required)`}
-              >
-                <KeyRound className="w-3 h-3 text-rose-500" />
-                <span className="hidden lg:inline text-[11px]">Switch</span>
-              </button>
-            </div>
-
-            {/* Android App & 24/7 Pair Sync button */}
-            {onOpenAndroidSync && (
-              <button
-                type="button"
-                onClick={() => {
-                  soundEngine.playBubblePop();
-                  onOpenAndroidSync();
-                }}
-                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-2xl glass-card hover:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-xs text-xs font-semibold"
-                title="Android App & 24/7 Partner Pairing"
-              >
-                <div className="relative flex items-center justify-center">
-                  <Smartphone className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                  <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-                </div>
-                <span className="hidden sm:inline">Android & Sync</span>
-              </button>
-            )}
-
-            {/* Quick Calendar Tab shortcut */}
+          {/* Zone 3: Essential Actions Only */}
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            {/* Active Partner Avatar & Switch Button */}
             <button
               type="button"
-              onClick={() => {
-                soundEngine.playBubblePop();
-                onSelectTab('calendar');
-              }}
-              className={`w-9 sm:w-10 h-9 sm:h-10 rounded-2xl glass-card flex items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-xs ${
-                currentTab === 'calendar' ? 'ring-2 ring-rose-500 text-rose-500' : 'text-stone-700 dark:text-stone-200'
-              }`}
-              title="Open Couple Calendar"
+              onClick={() => initiateSwitch(otherViewerId)}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl glass-card-subtle hover:bg-white/90 dark:hover:bg-stone-800 transition-all cursor-pointer text-xs group"
+              title={`Viewing as ${activeViewer.nickname}. Click to switch to ${otherViewer.nickname}'s side.`}
             >
-              <CalendarHeart className="w-4 h-4" />
+              <span className="text-base select-none">{activeViewer.avatar}</span>
+              <span className="font-semibold text-stone-800 dark:text-stone-200 max-w-[80px] sm:max-w-[110px] truncate">
+                {activeViewer.name}
+              </span>
+              <KeyRound className="w-3 h-3 text-stone-400 group-hover:text-rose-500 transition-colors ml-0.5" />
             </button>
 
-            {/* Quick Chat Tab shortcut */}
-            <button
-              type="button"
-              onClick={() => {
-                soundEngine.playBubblePop();
-                onSelectTab('chat');
-              }}
-              className={`w-9 sm:w-10 h-9 sm:h-10 rounded-2xl glass-card flex items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-xs relative ${
-                currentTab === 'chat' ? 'ring-2 ring-rose-500 text-rose-500' : 'text-stone-700 dark:text-stone-200'
-              }`}
-              title="Open Chat & Whispers"
-            >
-              <MessageCircle className="w-4 h-4" />
-              <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse border border-white dark:border-stone-900" />
-            </button>
-
-            {/* Dark Mode Toggle Button */}
-            <button
-              type="button"
-              onClick={() => {
-                soundEngine.playBubblePop();
-                onToggleDarkMode();
-              }}
-              className="w-9 sm:w-10 h-9 sm:h-10 rounded-2xl glass-card flex items-center justify-center text-stone-700 dark:text-amber-300 hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-xs"
-              title={profile.darkMode ? 'Switch to Light Mode' : 'Switch to Romantic Dark Mode'}
-            >
-              {profile.darkMode ? (
-                <Sun className="w-4 h-4 text-amber-400 transition-transform rotate-0 hover:rotate-45" />
-              ) : (
-                <Moon className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-              )}
-            </button>
-
-            {/* Ambient Music Toggle */}
+            {/* Ambient Sound Toggle */}
             <button
               type="button"
               onClick={() => {
                 soundEngine.playBubblePop();
                 onToggleAmbient();
               }}
-              className={`w-9 sm:w-10 h-9 sm:h-10 rounded-2xl glass-card flex items-center justify-center transition-all cursor-pointer shadow-xs ${
+              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl glass-card flex items-center justify-center transition-all cursor-pointer shadow-xs ${
                 ambientSound
-                  ? 'bg-rose-500/20 text-rose-600 dark:text-rose-400 ring-2 ring-rose-400/50'
-                  : 'text-stone-600 dark:text-stone-400 hover:text-rose-600'
+                  ? 'bg-rose-500/15 text-rose-600 dark:text-rose-400 ring-1 ring-rose-400/50'
+                  : 'text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-100/80 dark:hover:bg-stone-800'
               }`}
-              title={ambientSound ? 'Mute ambient melody' : 'Play romantic ambient melody'}
+              title={ambientSound ? 'Mute ambient music' : 'Play romantic ambient music'}
+              aria-label="Toggle ambient sound"
             >
               {ambientSound ? <Volume2 className="w-4 h-4 text-rose-500" /> : <VolumeX className="w-4 h-4" />}
             </button>
 
-            {/* Lock Button */}
+            {/* Dark / Light Mode Toggle */}
+            <button
+              type="button"
+              onClick={() => {
+                soundEngine.playBubblePop();
+                onToggleDarkMode();
+              }}
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl glass-card hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center justify-center text-stone-700 dark:text-amber-300 transition-all active:scale-95 cursor-pointer shadow-xs"
+              title={profile.darkMode ? 'Switch to Linen Light Mode' : 'Switch to Midnight Dark Mode'}
+              aria-label="Toggle color theme"
+            >
+              {profile.darkMode ? (
+                <Sun className="w-4 h-4 text-amber-400" />
+              ) : (
+                <Moon className="w-4 h-4 text-stone-700 hover:text-stone-900" />
+              )}
+            </button>
+
+            {/* Lock App Button */}
             <button
               type="button"
               onClick={() => {
                 soundEngine.playTap();
                 onLockApp();
               }}
-              className="w-9 sm:w-10 h-9 sm:h-10 rounded-2xl glass-card hover:text-rose-600 flex items-center justify-center text-stone-500 transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-xs"
-              title="Lock Couple Space"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl glass-card hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-rose-600 flex items-center justify-center text-stone-500 transition-all active:scale-95 cursor-pointer shadow-xs"
+              title="Lock sanctuary"
+              aria-label="Lock app"
             >
               <Lock className="w-4 h-4" />
             </button>
@@ -283,13 +271,14 @@ export default function NavigationDrawer({
 
       {/* Frosted Glass Slide-over Drawer */}
       <aside
-        className={`fixed top-0 left-0 bottom-0 z-50 w-80 max-w-[85vw] glass-panel border-r border-white/40 dark:border-white/10 shadow-2xl flex flex-col justify-between transition-transform duration-300 ease-out ${
+        className={`fixed top-0 left-0 bottom-0 z-50 w-80 max-w-[85vw] glass-panel border-r border-stone-200/80 dark:border-white/10 shadow-2xl flex flex-col justify-between transition-transform duration-300 ease-out ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         <div className="flex-1 overflow-y-auto p-5">
           {/* Drawer Header */}
-          <div className="flex items-center justify-between pb-5 border-b border-white/20 dark:border-white/10">
+          <div className="flex items-center justify-between pb-5 border-b border-stone-200/60 dark:border-white/10">
+            <div className="flex items-center gap-3">
               <img
                 src="/icon.svg"
                 alt="MS Verse"
@@ -416,7 +405,7 @@ export default function NavigationDrawer({
         </div>
 
         {/* Drawer Footer with Lock and Mobile Widgets */}
-        <div className="p-5 border-t border-white/20 dark:border-white/10 space-y-2.5">
+        <div className="p-5 border-t border-stone-200/60 dark:border-white/10 space-y-2.5">
           {onOpenAndroidSync && (
             <button
               type="button"

@@ -215,7 +215,7 @@ export default function DashboardView({
         </section>
       ) : (
         /* Regular Romantic Sanctuary Banner when not on a milestone day */
-        <section className="relative overflow-hidden rounded-3xl glass-panel p-6 sm:p-7 shadow-sm border border-white/60 dark:border-white/10">
+        <section className="relative overflow-hidden rounded-3xl glass-panel p-6 sm:p-7 shadow-sm border border-stone-200/80 dark:border-white/10">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-semibold mb-2">
@@ -247,7 +247,7 @@ export default function DashboardView({
               <button
                 type="button"
                 onClick={handleOpenAnniversaryLetter}
-                className="px-4 py-2.5 rounded-2xl glass-card hover:bg-rose-500/15 text-stone-700 dark:text-stone-300 text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer shadow-xs border border-white/40 dark:border-white/10"
+                className="px-4 py-2.5 rounded-2xl glass-card hover:bg-rose-500/15 text-stone-700 dark:text-stone-300 text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer shadow-xs border border-stone-200/70 dark:border-white/10"
               >
                 <Mail className="w-4 h-4 text-rose-500" />
                 <span>Love Letter</span>
@@ -281,19 +281,19 @@ export default function DashboardView({
 
           {/* Digits Display */}
           <div className="grid grid-cols-4 gap-2.5 my-4 text-center">
-            <div className="glass-card-subtle p-3 rounded-2xl border border-white/40 dark:border-white/5">
+            <div className="glass-card-subtle p-3 rounded-2xl border border-stone-200/70 dark:border-white/5">
               <div className="text-2xl sm:text-3xl font-bold font-mono tabular-nums text-stone-900 dark:text-white">
                 {totalDays}
               </div>
               <div className="text-[10px] uppercase tracking-wider text-stone-500 dark:text-stone-400 mt-0.5">Days</div>
             </div>
-            <div className="glass-card-subtle p-3 rounded-2xl border border-white/40 dark:border-white/5">
+            <div className="glass-card-subtle p-3 rounded-2xl border border-stone-200/70 dark:border-white/5">
               <div className="text-2xl sm:text-3xl font-bold font-mono tabular-nums text-stone-900 dark:text-white">
                 {String(totalHours).padStart(2, '0')}
               </div>
               <div className="text-[10px] uppercase tracking-wider text-stone-500 dark:text-stone-400 mt-0.5">Hours</div>
             </div>
-            <div className="glass-card-subtle p-3 rounded-2xl border border-white/40 dark:border-white/5">
+            <div className="glass-card-subtle p-3 rounded-2xl border border-stone-200/70 dark:border-white/5">
               <div className="text-2xl sm:text-3xl font-bold font-mono tabular-nums text-stone-900 dark:text-white">
                 {String(totalMinutes).padStart(2, '0')}
               </div>
@@ -507,7 +507,7 @@ export default function DashboardView({
                   </p>
                   <div className="flex items-center justify-between text-[11px] text-stone-400 dark:text-stone-500 mt-2">
                     <span>{new Date(currentPhoto.date).toLocaleDateString(undefined, { dateStyle: 'medium' })}</span>
-                    <span>Added with love by {profile[currentPhoto.addedBy]?.nickname || 'Us'}</span>
+                    <span>Added with love by {(currentPhoto.addedBy && profile[currentPhoto.addedBy]?.nickname) || 'Us'}</span>
                   </div>
                 </div>
               </div>
