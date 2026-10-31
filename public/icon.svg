@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF5376" />
+      <stop offset="45%" stop-color="#E11D48" />
+      <stop offset="85%" stop-color="#9333EA" />
+      <stop offset="100%" stop-color="#581C87" />
+    </linearGradient>
+
+    <!-- Glowing Heart Gradient -->
+    <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE4E6" />
+      <stop offset="40%" stop-color="#FDA4AF" />
+      <stop offset="100%" stop-color="#F43F5E" />
+    </linearGradient>
+
+    <!-- Bear Gradient -->
+    <linearGradient id="bearGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D7A977" />
+      <stop offset="100%" stop-color="#9C6B3D" />
+    </linearGradient>
+
+    <!-- Bunny Gradient -->
+    <linearGradient id="bunnyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#FFF0F5" />
+    </linearGradient>
+
+    <!-- Gold Text Gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFBEB" />
+      <stop offset="100%" stop-color="#FDE047" />
+    </linearGradient>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-opacity="0.3" flood-color="#4c0519" />
+    </filter>
+  </defs>
+
+  <!-- App Rounded Squircle Background -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)" />
+
+  <!-- Ambient Light Orbs -->
+  <circle cx="140" cy="140" r="130" fill="#ffffff" fill-opacity="0.12" />
+  <circle cx="380" cy="380" r="140" fill="#f43f5e" fill-opacity="0.25" />
+
+  <!-- Floating Sparkles in sky -->
+  <path d="M 90 90 Q 90 105 75 105 Q 90 105 90 120 Q 90 105 105 105 Q 90 105 90 90 Z" fill="#FFE4E6" opacity="0.9" />
+  <path d="M 420 110 Q 420 125 405 125 Q 420 125 420 140 Q 420 125 435 125 Q 420 125 420 110 Z" fill="#FFFBEB" opacity="0.95" />
+  <path d="M 70 340 Q 70 350 60 350 Q 70 350 70 360 Q 70 350 80 350 Q 70 350 70 340 Z" fill="#FFFFFF" opacity="0.8" />
+  <path d="M 430 330 Q 430 340 420 340 Q 430 340 430 350 Q 430 340 440 340 Q 430 340 430 330 Z" fill="#FDA4AF" opacity="0.85" />
+  <circle cx="110" cy="180" r="4" fill="#ffffff" opacity="0.75" />
+  <circle cx="395" cy="200" r="4" fill="#ffffff" opacity="0.75" />
+
+  <!-- Center Characters: Cute Bear 🧸 & Bunny 🌸 Cuddling -->
+  <g transform="translate(0, 15)" filter="url(#shadow)">
+    <!-- BEAR (Left - Manil) -->
+    <!-- Bear Left Ear -->
+    <circle cx="160" cy="165" r="28" fill="#9C6B3D" />
+    <circle cx="160" cy="165" r="16" fill="#FBCFE8" />
+
+    <!-- Bear Right Ear -->
+    <circle cx="235" cy="165" r="28" fill="#9C6B3D" />
+    <circle cx="235" cy="165" r="16" fill="#FBCFE8" />
+
+    <!-- Bear Body / Head -->
+    <ellipse cx="198" cy="225" rx="56" ry="52" fill="url(#bearGrad)" />
+
+    <!-- Bear Muzzle -->
+    <ellipse cx="198" cy="238" rx="24" ry="18" fill="#FDF2E9" />
+    <!-- Bear Nose & Mouth -->
+    <ellipse cx="198" cy="232" rx="7" ry="5" fill="#4A2E18" />
+    <path d="M 198 237 Q 198 245 192 247 M 198 245 Q 204 247 204 245" stroke="#4A2E18" stroke-width="2.5" stroke-linecap="round" fill="none" />
+
+    <!-- Bear Eyes (Happy curve) -->
+    <path d="M 174 216 Q 182 208 190 216" stroke="#26160B" stroke-width="3.5" stroke-linecap="round" fill="none" />
+    <path d="M 206 216 Q 214 208 222 216" stroke="#26160B" stroke-width="3.5" stroke-linecap="round" fill="none" />
+
+    <!-- Bear Blushing Cheeks -->
+    <ellipse cx="168" cy="228" rx="10" ry="6" fill="#FF8A9E" opacity="0.7" />
+    <ellipse cx="228" cy="228" rx="10" ry="6" fill="#FF8A9E" opacity="0.7" />
+
+    <!-- BUNNY (Right - Sanjana) -->
+    <!-- Bunny Left Ear (Tilted) -->
+    <g transform="rotate(-15, 275, 150)">
+      <ellipse cx="275" cy="135" rx="18" ry="48" fill="url(#bunnyGrad)" />
+      <ellipse cx="275" cy="135" rx="10" ry="34" fill="#FBCFE8" />
+    </g>
+
+    <!-- Bunny Right Ear (Tilted) -->
+    <g transform="rotate(18, 335, 150)">
+      <ellipse cx="335" cy="135" rx="18" ry="48" fill="url(#bunnyGrad)" />
+      <ellipse cx="335" cy="135" rx="10" ry="34" fill="#FBCFE8" />
+    </g>
+
+    <!-- Cute Little Pink Flower on Bunny Ear -->
+    <circle cx="288" cy="172" r="8" fill="#F43F5E" />
+    <circle cx="282" cy="168" r="6" fill="#FDA4AF" />
+    <circle cx="294" cy="168" r="6" fill="#FDA4AF" />
+    <circle cx="288" cy="164" r="6" fill="#FDA4AF" />
+    <circle cx="288" cy="172" r="3.5" fill="#FEF08A" />
+
+    <!-- Bunny Head -->
+    <ellipse cx="308" cy="225" rx="54" ry="50" fill="url(#bunnyGrad)" />
+
+    <!-- Bunny Eyes (Joyful wink & smile) -->
+    <path d="M 288 216 Q 296 208 304 216" stroke="#500724" stroke-width="3.5" stroke-linecap="round" fill="none" />
+    <path d="M 318 214 Q 326 206 334 214" stroke="#500724" stroke-width="3.5" stroke-linecap="round" fill="none" />
+
+    <!-- Bunny Nose & Mouth -->
+    <polygon points="311,228 315,228 313,232" fill="#F43F5E" />
+    <path d="M 313 232 Q 313 238 308 240 M 313 238 Q 318 240 318 238" stroke="#500724" stroke-width="2.5" stroke-linecap="round" fill="none" />
+
+    <!-- Bunny Blushing Cheeks -->
+    <ellipse cx="284" cy="228" rx="10" ry="6" fill="#FDA4AF" opacity="0.8" />
+    <ellipse cx="338" cy="228" rx="10" ry="6" fill="#FDA4AF" opacity="0.8" />
+
+    <!-- Central Glowing Big Romantic Heart Held Together -->
+    <g transform="translate(254, 275) scale(0.9)" filter="url(#softGlow)">
+      <!-- Heart Base -->
+      <path d="M 0 -25 
+               C -25 -75, -95 -75, -115 -25 
+               C -135 25, -75 85, 0 145 
+               C 75 85, 135 25, 115 -25 
+               C 95 -75, 25 -75, 0 -25 Z" 
+            fill="url(#heartGrad)" />
+
+      <!-- Inner Heart Highlight -->
+      <path d="M -15 -20 
+               C -35 -60, -85 -60, -95 -20 
+               C -105 15, -60 55, 0 110 
+               C -25 70, -75 25, -70 -10
+               C -65 -35, -35 -40, -15 -20 Z" 
+            fill="#FFFFFF" 
+            opacity="0.35" />
+
+      <!-- Sparkle on Heart -->
+      <circle cx="-50" cy="-20" r="5" fill="#FFFFFF" opacity="0.9" />
+      <circle cx="-38" cy="-5" r="3" fill="#FFFFFF" opacity="0.8" />
+
+      <!-- Monogram inside heart: "M ♡ S" -->
+      <text x="0" y="45" 
+            font-family="'Playfair Display', Georgia, serif" 
+            font-size="46" 
+            font-weight="800" 
+            fill="#FFFFFF" 
+            text-anchor="middle"
+            letter-spacing="2"
+            filter="drop-shadow(0 2px 4px rgba(136, 19, 55, 0.45))">M ♡ S</text>
+    </g>
+
+    <!-- Bear and Bunny Paws holding the heart -->
+    <ellipse cx="185" cy="295" rx="16" ry="12" fill="#D7A977" />
+    <ellipse cx="325" cy="295" rx="15" ry="11" fill="#FFFFFF" />
+  </g>
+
+  <!-- Bottom Title Badge for "MS VERSE" -->
+  <g transform="translate(256, 442)">
+    <!-- Pill Backing -->
+    <rect x="-140" y="-30" width="280" height="56" rx="28" fill="#181124" fill-opacity="0.85" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="2" />
+    
+    <text x="0" y="8" 
+          font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" 
+          font-size="28" 
+          font-weight="800" 
+          fill="url(#goldGrad)" 
+          text-anchor="middle" 
+          letter-spacing="5">MS VERSE</text>
+  </g>
+</svg>
