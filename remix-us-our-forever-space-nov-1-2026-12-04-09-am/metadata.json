@@ -1,0 +1,8 @@
+{
+  "name": "Remix Us — Our Forever Space",
+  "description": "An intimate, minimalist couple sanctuary celebrating your 3rd-month anniversary and preserving memories, countdowns, love notes, and intimacy forever.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
